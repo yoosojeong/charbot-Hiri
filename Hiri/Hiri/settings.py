@@ -19,8 +19,13 @@ SECRET_KEY = 'f^@ztwi4q9o*^x#^sfu=-ol0sap@1f9m=7&pf0g+4&x&p!y$*d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+CRONTAB_DJANGO_SETTINGS_MODULE = 'Hiri.settings.local_settings'
+
+CRONJOBS = [
+    ('* * * * *', 'parser'),
+]
 
 # Application definition
 
@@ -32,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_crontab',
     'app',
 ]
 

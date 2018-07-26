@@ -1,0 +1,10 @@
+Hiri/kakaenv/
+.htaccess
+Hiri/Hiri/__pycache__/
+add Hiri/__pycache__/
+add Hiri/app/migrations/__pycache__/
+Hiri/app/migrations/__pycache__/
+Hiri/__pycache__/
+Hiri/app/__pycache__/
+*.pyc
+**/*.pyc

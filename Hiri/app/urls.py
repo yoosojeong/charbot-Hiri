@@ -7,4 +7,9 @@ urlpatterns = [
         view=views.Keyboard.as_view(),
         name='Keyboard',
     ),
+    url(
+        regex=r'^message$',
+        view=views.Message.as_view(),
+        name='Message',
+    ),
 ]
