@@ -1,3 +1,4 @@
+import json
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.shortcuts import render
@@ -5,6 +6,7 @@ from rest_framework import status
 from django.shortcuts import render
 from django.http import JsonResponse
 from . import models
+from django.core.serializers import serialize
 
 class Keyboard(APIView):
     
@@ -40,10 +42,13 @@ class Message(APIView):
             )
     
         elif content_name == "오늘급식":
+            
+            today = models.TodayCafeteriaData.objects.all().last()
+
             return JsonResponse(
                 {
                     'message': {
-                        'text': models.TodayCafeteriaData.objects.get()
+                        'text': today.todayMenu
                     },
                     'keyboard': {
                         'type': 'buttons',
@@ -53,10 +58,13 @@ class Message(APIView):
             )
 
         elif content_name == "내일급식":
+            
+            yesday = models.YesdayCafeteriaData.objects.all().last()
+
             return JsonResponse(
                 {
                     'message': {
-                        'text': models.YesdayCafeteriaData.objects.get()
+                        'text': yesday.yesdayMenu
                     },
                     'keyboard': {
                         'type': 'buttons',
@@ -67,10 +75,13 @@ class Message(APIView):
 
         #급식순서
         elif content_name == "급식순서":
+            
+            seq = models.SeqCafeteriaData.objects.all().last()
+
             return JsonResponse(
                 {
                     'message': {
-                        'text': models.SeqCafeteriaData.objects.get()
+                        'text': seq.seqMenu
                     },
                     'keyboard': {
                         'type': 'buttons',
@@ -83,10 +94,12 @@ class Message(APIView):
         elif content_name == "날씨":
             # "서울특별시(현재)\n\n" +"•기온\n" + models.SeqCafeteriaData.objects.get()+ "\n\n•대기상태\n" + air
 
+            weather = models.WeatherData.objects.all().last()
+
             return JsonResponse(
                 {       
                     'message': {
-                        'text': models.SeqCafeteriaData.objects.get()
+                        'text':  "서울특별시(현재)\n\n" +"•기온\n" + weather.statData + " / " + weather.dumpData + "\n\n•대기상태\n" + "오존농도: " + weather.pm10 + "\n미세먼지: " + weather.pm25 + "\n초 미세먼지: " + weather.o3
                     },
                     'keyboard': {
                         'type': 'buttons',

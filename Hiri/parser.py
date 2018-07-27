@@ -1,5 +1,4 @@
 #!/mnt/d/sjyoo/Study/KakaoBot/Hiri/kakaenv/lib/python3.6
-
 import json 
 import requests
 from bs4 import BeautifulSoup
@@ -12,7 +11,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Hiri.settings")
 import django
 django.setup()
 
-from app.models import * 
+from app.models import *
 
 def cafeteriaList():
 
