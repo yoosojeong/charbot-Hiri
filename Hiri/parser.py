@@ -1,3 +1,5 @@
+#!/mnt/d/sjyoo/Study/KakaoBot/Hiri/kakaenv/lib/python3.6
+
 import json 
 import requests
 from bs4 import BeautifulSoup
@@ -218,9 +220,9 @@ def air_status():
 
             check = [o3value, pm10value, pm25value]
 
-            print(o3value) #오존농도
-            print(pm10value) #미세먼지
-            print(pm25value) #초 미세먼지
+            #print(o3value) #오존농도
+            #print(pm10value) #미세먼지
+            #print(pm25value) #초 미세먼지
 
             for c in check:
                 if c != "-":
