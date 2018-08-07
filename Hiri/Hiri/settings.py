@@ -23,10 +23,6 @@ ALLOWED_HOSTS = ['*']
 
 CRONTAB_DJANGO_SETTINGS_MODULE = 'Hiri.settings.local_settings'
 
-CRONJOBS = [
-    ('* * * * *', 'parser'),
-]
-
 # Application definition
 
 INSTALLED_APPS = [

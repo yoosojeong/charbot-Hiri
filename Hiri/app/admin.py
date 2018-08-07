@@ -12,6 +12,7 @@ from . import models
 class TodayCafeteriaAdmin(admin.ModelAdmin):
 
     list_display = (
+        'id',
         'todayMenu',
         'created_at',
     )

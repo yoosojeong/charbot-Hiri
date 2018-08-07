@@ -8,3 +8,4 @@ Hiri/__pycache__/
 Hiri/app/__pycache__/
 *.pyc
 **/*.pyc
+Hiri/kakaenv/bin Hiri/kakaenv/lib Hiri/kakaenv/pip-selfcheck.json
