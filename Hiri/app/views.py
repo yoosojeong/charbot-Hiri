@@ -77,11 +77,12 @@ class Message(APIView):
         elif content_name == "급식순서":
             
             seq = models.SeqCafeteriaData.objects.all().last()
+            #seq.seqMenu
 
             return JsonResponse(
                 {
                     'message': {
-                        'text': seq.seqMenu
+                        'text': "해킹 -> 게임 -> 유센"
                     },
                     'keyboard': {
                         'type': 'buttons',
@@ -99,7 +100,35 @@ class Message(APIView):
             return JsonResponse(
                 {       
                     'message': {
-                        'text':  "서울특별시(현재)\n\n" +"•기온\n" + weather.statData + " / " + weather.dumpData + "\n\n•대기상태\n" + "오존농도: " + weather.pm10 + "\n미세먼지: " + weather.pm25 + "\n초 미세먼지: " + weather.o3
+                        'text':  content_name + "를 눌렀습니다."
+                    },
+                    'keyboard': {
+                        'type': 'buttons',
+                        'buttons': ["기온", "미세먼지"]
+                    }
+                }
+            )
+
+        elif content_name == "기온":
+
+            return JsonResponse(
+                {       
+                    'message': {
+                        'text':  "서울특별시(현재)\n\n" +"•기온\n" + weather.statData + " / " + weather.dumpData 
+                    },
+                    'keyboard': {
+                        'type': 'buttons',
+                        'buttons': ["급식표", "급식순서", "날씨"]
+                    }
+                }
+            )
+
+        elif content_name == "미세먼지":
+    
+            return JsonResponse(
+                {       
+                    'message': {
+                        'text':  "서울특별시(현재)\n\n" +"•미세먼지\n" + "오존농도: " + weather.pm10 + "\n미세먼지: " + weather.pm25 + "\n초 미세먼지: " + weather.o3
                     },
                     'keyboard': {
                         'type': 'buttons',

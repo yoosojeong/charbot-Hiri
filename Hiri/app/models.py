@@ -1,3 +1,4 @@
+#-*- coding: utf-8 -*-
 from django.db import models
 
 #오늘 급식 / 내일 급식 / 급식순서 / 기온 / 미세먼지
