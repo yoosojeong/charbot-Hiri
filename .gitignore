@@ -10,3 +10,4 @@ Hiri/app/__pycache__/
 **/*.pyc
 Hiri/kakaenv/bin Hiri/kakaenv/lib Hiri/kakaenv/pip-selfcheck.json
 Hiri/kakaenv/
+Hiri/botenv/
