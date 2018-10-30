@@ -11,3 +11,8 @@ Hiri/app/__pycache__/
 Hiri/kakaenv/bin Hiri/kakaenv/lib Hiri/kakaenv/pip-selfcheck.json
 Hiri/kakaenv/
 Hiri/botenv/
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
