@@ -7,7 +7,7 @@ environment-defaults:
     branch: null
     repository: null
 global:
-  application_name: KakaobotDev-env
+  application_name: kakao-env-dev
   branch: master
   default_ec2_keyname: aws-eb
   default_platform: python-3.6
@@ -17,6 +17,6 @@ global:
   platform_name: null
   platform_version: null
   profile: eb-cli
-  repository: KakaoBot-dev
+  repository: kakao-env
   sc: git
   workspace_type: Application
