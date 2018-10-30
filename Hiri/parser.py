@@ -1,4 +1,5 @@
-#!/mnt/d/sjyoo/Study/KakaoBot/Hiri/kakaenv/lib/python3.6
+#!/workspace/Hiri/kakaenv/lib/python3.6
+
 import json 
 import requests
 from bs4 import BeautifulSoup
@@ -37,22 +38,32 @@ def cafeteriaList():
         )
 
     for cafeteriaList in school:
-        
-        cout = ""
+
         cafeteria = cafeteriaList.text.split("*")
-        
-        for count in range(len(cafeteria)):
-            cout += cafeteria[count].split(".")[-1] + "\n"
 
-        if len(cout) > 4:
-            cout = cout.replace("[", "일 - ")
-            cout = cout.replace("]", "\n")
 
-            li.append(cout[:-2])
+        if cafeteria != [''] and cafeteria != [' ']:
 
-        else:
-            li.append("급식이 없습니다.")
+            return_cafeteria = ''
 
+            for count in range(len(cafeteria)-1):
+
+                new_cafeteria = cafeteria[count].split(".")[-1] + "\n"
+
+                return_cafeteria += new_cafeteria
+
+#            return_cafeteria = return_
+
+            return_cafeteria = return_cafeteria.replace('[', '일 - ')
+            return_cafeteria = return_cafeteria.replace(']', '\n\n')    
+
+
+            if len(return_cafeteria) > 4:
+                li.append(return_cafeteria)
+
+            else:
+                no_cafeteria = "급식이 없습니다."
+                li.append(no_cafeteria)
 
     data = [li[d-1], li[d]]
 
@@ -119,6 +130,7 @@ def weatherList():
     'ragged shower rain': '불규칙적 소나기 비 (우산)',
     'light snow': '가벼운 눈',
     'snow': '눈',
+    'Rain': '비',
     'heavy snow': '강한 눈',
     'sleet': '진눈깨비',
     'shower sleet': '소나기 진눈깨비',
@@ -217,54 +229,54 @@ def air_status():
             end_pm25value = need_parsing.find('</pm25value>')
             pm25value = need_parsing[start_pm25value + len('<pm25value>') : end_pm25value]
 
-            check = [o3value, pm10value, pm25value]
-
+            check = [pm10value, pm25value, o3value]
+          
+            
             #print(o3value) #오존농도
             #print(pm10value) #미세먼지
             #print(pm25value) #초 미세먼지
 
-            for c in check:
-                if c != "-":
-                    
-                    pm10valu = float(pm10value)
-                    pm25valu = float(pm25value)
-                    o3valu = float(o3value)
-                    
-                    pm10 = ''
-                    pm25 = ''
-                    o3 = ''
+            try:    
+                pm10valu = float(pm10value)
+                pm25valu = float(pm25value)
+                o3valu = float(o3value)
 
-                    if pm10valu > 75 :
-                        pm10 = '매우나쁨'
-                    elif pm10valu > 35:
-                        pm10 = '나쁨'
-                    elif pm10valu > 15:
-                        pm10 = '보통'
-                    else :
-                        pm10 = '좋음'
+                pm10 = ''
+                pm25 = ''
+                o3 = ''
 
-                    if pm25valu > 75 :
-                        pm25 = '매우나쁨'
-                    elif pm25valu > 35:
-                        pm25 = '나쁨'
-                    elif pm25valu > 15:
-                        pm25 = '보통'
-                    else :
-                        pm25 = '좋음'
+                if pm10valu > 75 :
+                    pm10 = '매우나쁨'
+                elif pm10valu > 35:
+                    pm10 = '나쁨'
+                elif pm10valu > 15:
+                    pm10 = '보통'
+                else :
+                    pm10 = '좋음'
 
-                    if o3valu > 0.15 :
-                        o3 = '매우나쁨'
-                    elif o3valu > 0.09:
-                        o3 = '나쁨'
-                    elif o3valu > 0.03:
-                        o3 = '보통'
-                    else :
-                        o3 = '좋음'
+                if pm25valu > 75 :
+                    pm25 = '매우나쁨'
+                elif pm25valu > 35:
+                    pm25 = '나쁨'
+                elif pm25valu > 15:
+                    pm25 = '보통'
+                else :
+                    pm25 = '좋음'
 
-                    data = [pm10, pm25, o3]
+                if o3valu > 0.15 :
+                    o3 = '매우나쁨'
+                elif o3valu > 0.09:
+                    o3 = '나쁨'
+                elif o3valu > 0.03:
+                    o3 = '보통'
+                else :
+                    o3 = '좋음'
 
-                else:
-                    data = ["분석중", "분석중", "분석중"]
+                data = [pm10, pm25, o3]
+
+            except:
+                data = ["분석중", "분석중", "분석중"]    
+                return data
 
             return data
 

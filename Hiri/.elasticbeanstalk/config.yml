@@ -3,18 +3,19 @@ branch-defaults:
     environment: null
     group_suffix: null
   master:
-    environment: Hiri-dev
+    environment: null
+    group_suffix: null
 global:
-  application_name: Hiri
-  branch: null
+  application_name: django-tutorial
+  branch: master
   default_ec2_keyname: aws-eb
-  default_platform: Python 3.6
+  default_platform: python-3.6
   default_region: ap-northeast-2
   include_git_submodules: true
   instance_profile: null
   platform_name: null
   platform_version: null
   profile: eb-cli
-  repository: null
+  repository: origin
   sc: git
   workspace_type: Application
