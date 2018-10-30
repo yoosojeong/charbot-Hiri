@@ -2,6 +2,10 @@ branch-defaults:
   master:
     environment: KakaoBot-dev
     group_suffix: null
+environment-defaults:
+  KakaoBot-dev:
+    branch: master
+    repository: origin
 global:
   application_name: KakaoBot
   branch: null
